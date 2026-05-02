@@ -4,6 +4,255 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İyilik Köprüsü | Giriş</title>
+    <!-- Favicon Bağlantısı -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        .btn-main {
+            background: var(--primary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-main:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+        }
+
+        .lang-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1.5em;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Üst Menü (Dil ve Tema) -->
+    <nav class="p-6 flex justify-between items-center max-w-6xl mx-auto w-full">
+        <div class="flex items-center gap-3 font-bold text-xl tracking-tight">
+            <img src="favicon.png" alt="Logo" class="logo-img">
+            <span>İyilik Köprüsü</span>
+        </div>
+        
+        <div class="flex items-center gap-4">
+            <!-- Dil Seçici -->
+            <div class="relative">
+                <select id="langSelect" class="lang-select bg-gray-100 dark:bg-slate-800 border-none rounded-xl px-4 py-2 pr-10 text-sm font-semibold focus:ring-2 focus:ring-blue-500 transition-colors">
+                    <option value="tr">TR</option>
+                    <option value="en">EN</option>
+                    <option value="ar">AR</option>
+                    <option value="fr">FR</option>
+                    <option value="es">ES</option>
+                </select>
+            </div>
+
+            <!-- Tema Değiştirici -->
+            <button id="themeToggle" class="w-10 h-10 rounded-xl bg-gray-100 dark:bg-slate-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-slate-700 transition-all">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Ana İçerik -->
+    <main class="flex-grow flex flex-col items-center justify-center px-6 py-12">
+        <div class="text-center mb-12 max-w-2xl">
+            <div class="inline-block p-2 bg-white dark:bg-slate-800 rounded-3xl mb-6 shadow-sm">
+                <!-- Ana Logo Alanı -->
+                <img src="favicon.png" alt="İyilik Köprüsü Logo" class="hero-logo">
+            </div>
+            <h1 id="mainTitle" class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tighter">İyilik Köprüsü</h1>
+            <p id="mainDesc" class="text-lg md:text-xl text-gray-500 dark:text-gray-400 font-medium leading-relaxed">
+                Geçmişin vakıf ruhunu dijital teknolojiyle birleştirerek iyiliği her yere ulaştırıyoruz.
+            </p>
+        </div>
+
+        <div class="w-full max-w-md space-y-4">
+            <a href="https://iyilikkoprusu.org" class="btn-main block w-full text-white text-center font-extrabold py-5 px-8 rounded-2xl shadow-xl text-2xl">
+                <span id="enterBtn">Sisteme Giriş Yap</span> <i class="fas fa-chevron-right ml-2 text-xl"></i>
+            </a>
+            <p class="text-center text-sm text-gray-400 font-medium tracking-wide italic">
+                <i class="fas fa-qrcode mr-1"></i> yonlendirme-iyilikkoprusu aktif
+            </p>
+        </div>
+
+        <!-- Bilgi Kartları -->
+        <div class="grid md:grid-cols-3 gap-6 mt-20 max-w-5xl w-full">
+            <div class="glass-card p-8 rounded-[2rem] border border-gray-100 shadow-sm text-center">
+                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4 font-bold text-xl">1</div>
+                <h4 id="step1Title" class="font-bold text-lg mb-2">Ürünü Seç</h4>
+                <p id="step1Desc" class="text-sm text-gray-500 dark:text-gray-400">Katalogdan oyuncağınızı seçin ve siparişinizi oluşturun.</p>
+            </div>
+            <div class="glass-card p-8 rounded-[2rem] border border-gray-100 shadow-sm text-center">
+                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4 font-bold text-xl">2</div>
+                <h4 id="step2Title" class="font-bold text-lg mb-2">Elden Ödeme</h4>
+                <p id="step2Desc" class="text-sm text-gray-500 dark:text-gray-400">Ödemeyi yetkili ekibe okul standında nakit olarak yapın.</p>
+            </div>
+            <div class="glass-card p-8 rounded-[2rem] border border-gray-100 shadow-sm text-center">
+                <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-xl flex items-center justify-center mx-auto mb-4 font-bold text-xl">3</div>
+                <h4 id="step3Title" class="font-bold text-lg mb-2">Teslim Al</h4>
+                <p id="step3Desc" class="text-sm text-gray-500 dark:text-gray-400">Onay sonrası oyuncağınızı stanttan hemen teslim alın.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Alt Bilgi -->
+    <footer class="py-10 text-center border-t border-gray-100 dark:border-slate-800">
+        <div class="flex justify-center gap-6 mb-4 text-gray-400 text-sm font-bold uppercase tracking-widest">
+            <span>Ceyhun Gezer</span>
+            <span>Eyüp Ensar</span>
+            <span>Çağrı Esat</span>
+            <span>Yusuf Affan</span>
+        </div>
+        <p class="text-blue-600 font-black">2024 • İyilik Köprüsü</p>
+    </footer>
+
+    <script>
+        const translations = {
+            tr: {
+                title: "İyilik Köprüsü",
+                desc: "Geçmişin vakıf ruhunu dijital teknolojiyle birleştirerek iyiliği her yere ulaştırıyoruz.",
+                enter: "Sisteme Giriş Yap",
+                s1t: "Ürünü Seç",
+                s1d: "Katalogdan oyuncağınızı seçin ve siparişinizi oluşturun.",
+                s2t: "Elden Ödeme",
+                s2d: "Ödemeyi yetkili ekibe okul standında nakit olarak yapın.",
+                s3t: "Teslim Al",
+                s3d: "Onay sonrası oyuncağınızı stanttan hemen teslim alın."
+            },
+            en: {
+                title: "Bridge of Kindness",
+                desc: "Combining the waqf spirit of the past with digital technology to spread kindness everywhere.",
+                enter: "Enter System",
+                s1t: "Choose Product",
+                s1d: "Select your toy from the catalog and create your order.",
+                s2t: "Cash Payment",
+                s2d: "Pay in cash to the authorized team at the school stand.",
+                s3t: "Receive",
+                s3d: "Collect your toy immediately after payment confirmation."
+            },
+            ar: {
+                title: "جسر الخير",
+                desc: "الجمع بين روح الوقف في الماضي والتكنولوجيا الرقمية لنشر الخير في كل مكان.",
+                enter: "الدخول إلى النظام",
+                s1t: "اختر المنتج",
+                s1d: "اختر لعبتك من الكتالوج وأنشئ طلبك.",
+                s2t: "الدفع نقداً",
+                s2d: "ادفع نقداً للفريق المعتمد في جناح المدرسة.",
+                s3t: "استلام",
+                s3d: "استلم لعبتك فوراً بعد تأكيد الدفع."
+            },
+            fr: {
+                title: "Pont de la Bonté",
+                desc: "Allier l'esprit du waqf du passé à la technologie numérique pour répandre la bonté partout.",
+                enter: "Entrer dans le système",
+                s1t: "Choisir un produit",
+                s1d: "Sélectionnez votre jouet dans le catalogue et créez votre commande.",
+                s2t: "Paiement en espèces",
+                s2d: "Payez en espèces à l'équipe autorisée au stand de l'école.",
+                s3t: "Recevoir",
+                s3d: "Récupérez votre jouet immédiatement après confirmation du paiement."
+            },
+            es: {
+                title: "Puente de la Bondad",
+                desc: "Combinando el espíritu waqf del pasado con la tecnología digital para difundir la bondad por todas partes.",
+                enter: "Entrar al Sistema",
+                s1t: "Elegir Producto",
+                s1d: "Selecciona tu juguete del catálogo y crea tu pedido.",
+                s2t: "Pago en Efectivo",
+                s2d: "Paga en efectivo al equipo autorizado en el stand de la escuela.",
+                s3t: "Recibir",
+                s3d: "Recoge tu juguete inmediatamente después de la confirmación del pago."
+            }
+        };
+
+        const themeToggle = document.getElementById('themeToggle');
+        const langSelect = document.getElementById('langSelect');
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        langSelect.addEventListener('change', (e) => {
+            const lang = e.target.value;
+            updateLanguage(lang);
+            localStorage.setItem('lang', lang);
+        });
+
+        function updateLanguage(lang) {
+            const t = translations[lang];
+            document.getElementById('mainTitle').innerText = t.title;
+            document.getElementById('mainDesc').innerText = t.desc;
+            document.getElementById('enterBtn').innerText = t.enter;
+            document.getElementById('step1Title').innerText = t.s1t;
+            document.getElementById('step1Desc').innerText = t.s1d;
+            document.getElementById('step2Title').innerText = t.s2t;
+            document.getElementById('step2Desc').innerText = t.s2d;
+            document.getElementById('step3Title').innerText = t.s3t;
+            document.getElementById('step3Desc').innerText = t.s3d;
+            document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        }
+
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('theme');
+            const savedLang = localStorage.getItem('lang') || 'tr';
+            if (savedTheme === 'dark') document.body.classList.add('dark');
+            langSelect.value = savedLang;
+            updateLanguage(savedLang);
+        };
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İyilik Köprüsü | Giriş</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
