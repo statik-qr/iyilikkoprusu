@@ -2,14 +2,14 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>İyilik Köprüsü | Giriş</title>
     <!-- Favicon Bağlantısı -->
     <link rel="icon" type="image/png" href="favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         
         :root {
             --primary: #2563eb;
@@ -18,137 +18,175 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-x: hidden;
+            background: fixed linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         }
 
         .dark {
-            background-color: #0f172a;
+            background: fixed linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: #f8fafc;
         }
 
-        .dark .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            border-color: rgba(255, 255, 255, 0.1);
+        /* Glassmorphism Efektleri */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
 
         .btn-main {
-            background: var(--primary);
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            touch-action: manipulation;
         }
 
-        .btn-main:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+        .btn-main:active {
+            transform: scale(0.96);
+            filter: brightness(0.9);
         }
 
         .lang-select {
             appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 0.5rem center;
-            background-size: 1.5em;
+            background-position: right 0.75rem center;
+            background-size: 1em;
         }
 
-        .logo-img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
+        /* Mobil Optimizasyonları */
+        @media (max-width: 640px) {
+            .hero-logo { width: 100px; height: 100px; }
+            h1 { font-size: 2.5rem !important; }
+            .glass-card { padding: 1.5rem !important; }
         }
 
-        .hero-logo {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
+        /* Animasyonlu Arka Plan Nesneleri */
+        .blob {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: #3b82f6;
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.15;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(20%, 20%); }
         }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
+    <!-- Arka Plan Blobları -->
+    <div class="blob top-0 left-0"></div>
+    <div class="blob bottom-0 right-0" style="background: #60a5fa; animation-delay: -10s;"></div>
 
-    <!-- Üst Menü (Dil ve Tema) -->
-    <nav class="p-6 flex justify-between items-center max-w-6xl mx-auto w-full">
-        <div class="flex items-center gap-3 font-bold text-xl tracking-tight">
-            <img src="favicon.png" alt="Logo" class="logo-img">
-            <span>İyilik Köprüsü</span>
-        </div>
-        
-        <div class="flex items-center gap-4">
-            <!-- Dil Seçici -->
-            <div class="relative">
-                <select id="langSelect" class="lang-select bg-gray-100 dark:bg-slate-800 border-none rounded-xl px-4 py-2 pr-10 text-sm font-semibold focus:ring-2 focus:ring-blue-500 transition-colors">
+    <!-- Üst Menü -->
+    <nav class="glass-nav px-4 py-3 md:px-8">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2 font-extrabold text-lg md:text-xl tracking-tight">
+                <img src="favicon.png" alt="Logo" class="w-8 h-8 md:w-10 md:h-10 object-contain">
+                <span class="hidden xs:block">İyilik Köprüsü</span>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <select id="langSelect" class="lang-select bg-white/50 dark:bg-slate-800/50 border-none rounded-2xl px-3 py-1.5 md:px-4 md:py-2 pr-8 text-xs md:text-sm font-bold focus:ring-2 focus:ring-blue-500 transition-all cursor-pointer">
                     <option value="tr">TR</option>
                     <option value="en">EN</option>
                     <option value="ar">AR</option>
                     <option value="fr">FR</option>
                     <option value="es">ES</option>
                 </select>
-            </div>
 
-            <!-- Tema Değiştirici -->
-            <button id="themeToggle" class="w-10 h-10 rounded-xl bg-gray-100 dark:bg-slate-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-slate-700 transition-all">
-                <i class="fas fa-moon dark:hidden"></i>
-                <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
-            </button>
+                <button id="themeToggle" class="w-9 h-9 md:w-11 md:h-11 rounded-2xl bg-white/50 dark:bg-slate-800/50 flex items-center justify-center hover:bg-white dark:hover:bg-slate-700 transition-all shadow-sm">
+                    <i class="fas fa-moon dark:hidden text-slate-600"></i>
+                    <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <!-- Ana İçerik -->
-    <main class="flex-grow flex flex-col items-center justify-center px-6 py-12">
-        <div class="text-center mb-12 max-w-2xl">
-            <div class="inline-block p-2 bg-white dark:bg-slate-800 rounded-3xl mb-6 shadow-sm">
-                <!-- Ana Logo Alanı -->
-                <img src="favicon.png" alt="İyilik Köprüsü Logo" class="hero-logo">
+    <main class="flex-grow flex flex-col items-center justify-center px-4 py-10 md:py-16">
+        <div class="text-center mb-10 max-w-2xl w-full">
+            <div class="inline-block p-4 bg-white/40 dark:bg-slate-800/40 backdrop-blur-md rounded-[2.5rem] mb-6 shadow-inner border border-white/50">
+                <img src="favicon.png" alt="İyilik Köprüsü Logo" class="hero-logo w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-2xl">
             </div>
-            <h1 id="mainTitle" class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tighter">İyilik Köprüsü</h1>
-            <p id="mainDesc" class="text-lg md:text-xl text-gray-500 dark:text-gray-400 font-medium leading-relaxed">
+            <h1 id="mainTitle" class="text-4xl md:text-6xl font-black mb-4 tracking-tighter leading-tight">İyilik Köprüsü</h1>
+            <p id="mainDesc" class="text-base md:text-xl text-gray-600 dark:text-gray-400 font-medium leading-relaxed max-w-lg mx-auto">
                 Geçmişin vakıf ruhunu dijital teknolojiyle birleştirerek iyiliği her yere ulaştırıyoruz.
             </p>
         </div>
 
-        <div class="w-full max-w-md space-y-4">
-            <a href="https://iyilikkoprusu.org" class="btn-main block w-full text-white text-center font-extrabold py-5 px-8 rounded-2xl shadow-xl text-2xl">
-                <span id="enterBtn">Sisteme Giriş Yap</span> <i class="fas fa-chevron-right ml-2 text-xl"></i>
+        <div class="w-full max-w-sm px-4 space-y-6">
+            <a href="https://iyilikkoprusu.org" class="btn-main block w-full text-white text-center font-bold py-5 px-8 rounded-3xl shadow-2xl text-xl md:text-2xl active:scale-95 transition-transform">
+                <span id="enterBtn">Sisteme Giriş Yap</span> <i class="fas fa-arrow-right-long ml-2 text-lg"></i>
             </a>
-            <p class="text-center text-sm text-gray-400 font-medium tracking-wide italic">
-                <i class="fas fa-qrcode mr-1"></i> yonlendirme-iyilikkoprusu aktif
-            </p>
+            <div class="flex items-center justify-center gap-2 text-gray-400 dark:text-gray-500 font-bold text-[10px] md:text-xs uppercase tracking-widest bg-white/20 dark:bg-black/10 py-2 rounded-full backdrop-blur-sm">
+                <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                <i class="fas fa-link mr-1"></i> yonlendirme-iyilikkoprusu aktif
+            </div>
         </div>
 
         <!-- Bilgi Kartları -->
-        <div class="grid md:grid-cols-3 gap-6 mt-20 max-w-5xl w-full">
-            <div class="glass-card p-8 rounded-[2rem] border border-gray-100 shadow-sm text-center">
-                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4 font-bold text-xl">1</div>
-                <h4 id="step1Title" class="font-bold text-lg mb-2">Ürünü Seç</h4>
-                <p id="step1Desc" class="text-sm text-gray-500 dark:text-gray-400">Katalogdan oyuncağınızı seçin ve siparişinizi oluşturun.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-16 max-w-5xl w-full px-4">
+            <div class="glass-card p-6 md:p-8 rounded-[2.5rem] text-center">
+                <div class="w-12 h-12 bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center mx-auto mb-5 font-black text-xl shadow-inner">1</div>
+                <h4 id="step1Title" class="font-bold text-lg md:text-xl mb-2 text-gray-800 dark:text-gray-100">Ürünü Seç</h4>
+                <p id="step1Desc" class="text-sm text-gray-500 dark:text-gray-400 leading-snug">Katalogdan oyuncağınızı seçin ve siparişinizi oluşturun.</p>
             </div>
-            <div class="glass-card p-8 rounded-[2rem] border border-gray-100 shadow-sm text-center">
-                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4 font-bold text-xl">2</div>
-                <h4 id="step2Title" class="font-bold text-lg mb-2">Elden Ödeme</h4>
-                <p id="step2Desc" class="text-sm text-gray-500 dark:text-gray-400">Ödemeyi yetkili ekibe okul standında nakit olarak yapın.</p>
+            
+            <div class="glass-card p-6 md:p-8 rounded-[2.5rem] text-center">
+                <div class="w-12 h-12 bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center mx-auto mb-5 font-black text-xl shadow-inner">2</div>
+                <h4 id="step2Title" class="font-bold text-lg md:text-xl mb-2 text-gray-800 dark:text-gray-100">Elden Ödeme</h4>
+                <p id="step2Desc" class="text-sm text-gray-500 dark:text-gray-400 leading-snug">Ödemeyi yetkili ekibe okul standında nakit olarak yapın.</p>
             </div>
-            <div class="glass-card p-8 rounded-[2rem] border border-gray-100 shadow-sm text-center">
-                <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-xl flex items-center justify-center mx-auto mb-4 font-bold text-xl">3</div>
-                <h4 id="step3Title" class="font-bold text-lg mb-2">Teslim Al</h4>
-                <p id="step3Desc" class="text-sm text-gray-500 dark:text-gray-400">Onay sonrası oyuncağınızı stanttan hemen teslim alın.</p>
+            
+            <div class="glass-card p-6 md:p-8 rounded-[2.5rem] text-center">
+                <div class="w-12 h-12 bg-green-500/10 dark:bg-green-500/20 text-green-600 dark:text-green-400 rounded-2xl flex items-center justify-center mx-auto mb-5 font-black text-xl shadow-inner">3</div>
+                <h4 id="step3Title" class="font-bold text-lg md:text-xl mb-2 text-gray-800 dark:text-gray-100">Teslim Al</h4>
+                <p id="step3Desc" class="text-sm text-gray-500 dark:text-gray-400 leading-snug">Onay sonrası oyuncağınızı stanttan hemen teslim alın.</p>
             </div>
         </div>
     </main>
 
     <!-- Alt Bilgi -->
-    <footer class="py-10 text-center border-t border-gray-100 dark:border-slate-800">
-        <div class="flex justify-center gap-6 mb-4 text-gray-400 text-sm font-bold uppercase tracking-widest">
+    <footer class="py-12 text-center border-t border-white/20 dark:border-white/5 bg-white/30 dark:bg-slate-900/30 backdrop-blur-md">
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-4 text-gray-500 dark:text-gray-400 text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">
             <span>Ceyhun Gezer</span>
             <span>Eyüp Ensar</span>
             <span>Çağrı Esat</span>
             <span>Yusuf Affan</span>
         </div>
-        <p class="text-blue-600 font-black">2024 • İyilik Köprüsü</p>
+        <p class="text-blue-600 dark:text-blue-400 font-black text-sm">2024 • İyilik Köprüsü</p>
     </footer>
 
     <script>
@@ -246,151 +284,5 @@
             updateLanguage(savedLang);
         };
     </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İyilik Köprüsü | Giriş</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-        
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f8fafc;
-        }
-
-        .gradient-bg {
-            background: radial-gradient(circle at top right, #3b82f6, transparent),
-                        radial-gradient(circle at bottom left, #1e3a8a, transparent),
-                        #2563eb;
-        }
-
-        .btn-glow:hover {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .step-card {
-            transition: all 0.3s ease;
-        }
-
-        .step-card:hover {
-            border-color: #3b82f6;
-            background: #f0f7ff;
-        }
-    </style>
-</head>
-<body class="antialiased">
-
-    <!-- Hero Kapak -->
-    <header class="gradient-bg min-h-[60vh] flex flex-col items-center justify-center text-white px-6 text-center relative overflow-hidden">
-        <!-- Dekoratif Arka Plan Objesi -->
-        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-            <i class="fas fa-bridge text-[20rem] absolute -bottom-20 -right-20 rotate-12"></i>
-        </div>
-
-        <div class="z-10 animate-fade-in-up">
-            <div class="inline-block p-4 bg-white/10 backdrop-blur-md rounded-3xl mb-6">
-                <i class="fas fa-hands-holding-heart text-5xl"></i>
-            </div>
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">İyilik Köprüsü</h1>
-            <p class="text-lg md:text-xl opacity-90 max-w-xl mx-auto font-light leading-relaxed">
-                Geçmişin ruhu, geleceğin teknolojisiyle buluşuyor. İyiliğe giden en kısa yol.
-            </p>
-        </div>
-
-        <div class="mt-10 z-10 w-full max-w-sm">
-            <a href="https://iyilikkoprusu.org" class="btn-glow block w-full bg-white text-blue-700 font-bold py-5 px-8 rounded-2xl shadow-2xl text-2xl transition-all duration-300">
-                Sisteme Giriş Yap <i class="fas fa-arrow-right ml-2"></i>
-            </a>
-            <p class="mt-4 text-sm opacity-70 italic font-medium text-white/80">
-                <i class="fas fa-qrcode mr-1"></i> QR ile başarıyla bağlandınız.
-            </p>
-        </div>
-    </header>
-
-    <!-- Bilgilendirme ve Rehber -->
-    <main class="max-w-4xl mx-auto -mt-12 px-6 pb-20 relative z-20">
-        
-        <!-- Özet Bilgi Kartı -->
-        <div class="bg-white rounded-[2.5rem] shadow-xl p-8 md:p-12 border border-gray-100 mb-10">
-            <h2 class="text-3xl font-extrabold text-gray-800 mb-6 flex items-center gap-3">
-                <span class="w-2 h-8 bg-blue-600 rounded-full"></span>
-                Bu Köprü Nereye Gider?
-            </h2>
-            <p class="text-gray-600 text-lg leading-relaxed mb-8">
-                Evlerde bekleyen oyuncaklar bu platformda değer kazanıyor. Elde edilen tüm fonlar doğrudan Gazze'deki savaş mağduru çocuklara ve yetimlere aktarılıyor. Siz de bu köprünün bir parçası olabilirsiniz.
-            </p>
-
-            <!-- Adım Adım Rehber -->
-            <div class="space-y-6">
-                <h3 class="text-xl font-bold text-blue-900 mb-4 tracking-wide uppercase text-sm">Nasıl Sipariş Verilir?</h3>
-                
-                <!-- Adım 1 -->
-                <div class="step-card flex items-start gap-5 p-6 border-2 border-gray-50 rounded-3xl">
-                    <div class="bg-blue-100 text-blue-700 w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-xl">1</div>
-                    <div>
-                        <h4 class="font-bold text-lg text-gray-800">Oyuncak Seçimi</h4>
-                        <p class="text-gray-500 text-sm">Ürün kataloğumuzdan istediğiniz oyuncağı seçin ve sepetinize ekleyerek siparişi oluşturun.</p>
-                    </div>
-                </div>
-
-                <!-- Adım 2 -->
-                <div class="step-card flex items-start gap-5 p-6 border-2 border-gray-50 rounded-3xl">
-                    <div class="bg-blue-100 text-blue-700 w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-xl">2</div>
-                    <div>
-                        <h4 class="font-bold text-lg text-gray-800">Elden Ödeme & Onay</h4>
-                        <p class="text-gray-500 text-sm">Ödemeyi okul standımızdaki görevlilere (Eyüp Ensar, Çağrı Esat veya Yusuf Affan) <strong>elden nakit</strong> olarak yapın.</p>
-                    </div>
-                </div>
-
-                <!-- Adım 3 -->
-                <div class="step-card flex items-start gap-5 p-6 border-2 border-gray-50 rounded-3xl">
-                    <div class="bg-green-100 text-green-700 w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center font-bold text-xl">3</div>
-                    <div>
-                        <h4 class="font-bold text-lg text-gray-800">Anında Teslimat</h4>
-                        <p class="text-gray-500 text-sm">Ödeme onayından hemen sonra oyuncağınızı fiziksel olarak teslim alın.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Uyarı Paneli -->
-            <div class="mt-10 bg-amber-50 border-l-4 border-amber-400 p-6 rounded-2xl flex items-start gap-4">
-                <i class="fas fa-exclamation-triangle text-amber-500 text-xl mt-1"></i>
-                <div class="text-sm text-amber-900 leading-tight">
-                    <strong>Önemli:</strong> Online ödeme sistemi aktif değildir. Sipariş verdikten sonra işleminizi tamamlamak için yetkili ekibe uğramayı unutmayın!
-                </div>
-            </div>
-        </div>
-
-        <!-- Alt Bölüm: Ekip -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div class="p-4">
-                <p class="text-[10px] uppercase font-bold text-gray-400 mb-1">Danışman</p>
-                <p class="text-sm font-bold text-gray-700">Ceyhun Gezer</p>
-            </div>
-            <div class="p-4">
-                <p class="text-[10px] uppercase font-bold text-gray-400 mb-1">Sistem</p>
-                <p class="text-sm font-bold text-gray-700">Eyüp Ensar</p>
-            </div>
-            <div class="p-4">
-                <p class="text-[10px] uppercase font-bold text-gray-400 mb-1">Tasarım</p>
-                <p class="text-sm font-bold text-gray-700">Çağrı Esat</p>
-            </div>
-            <div class="p-4">
-                <p class="text-[10px] uppercase font-bold text-gray-400 mb-1">Altyapı</p>
-                <p class="text-sm font-bold text-gray-700">Yusuf Affan</p>
-            </div>
-        </div>
-    </main>
-
-    <footer class="py-10 border-t border-gray-100 text-center">
-        <p class="text-sm text-gray-400">Bu proje bir <strong>NyxLabs</strong> iştirakidir.</p>
-    </footer>
-
 </body>
 </html>
