@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İyilik Köprüsü | Hoş Geldiniz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
 
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-bounce:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex flex-col items-center justify-center text-white px-6 text-center">
+        <div class="mb-8 animate-fade-in">
+            <i class="fas fa-hands-helping text-7xl mb-4"></i>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 tracking-tight">İyilik Köprüsü</h1>
+            <p class="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto font-light">
+                Akşemseddin'in Vakıf Ruhu, Dijital Dünyanın Teknolojisiyle Buluşuyor.
+            </p>
+        </div>
+
+        <div class="flex flex-col gap-4 w-full max-w-sm">
+            <!-- Ana Siteye Yönlendirme -->
+            <a href="https://iyilikkoprusu.org" class="btn-bounce bg-white text-blue-700 font-bold py-4 px-8 rounded-2xl shadow-2xl text-xl flex items-center justify-center gap-3">
+                <i class="fas fa-external-link-alt"></i>
+                İyilik Köprüsü'ne Git
+            </a>
+            
+            <a href="#nasil-calisir" class="text-white opacity-80 hover:opacity-100 transition-all font-medium py-2">
+                Nasıl Çalışır? Merak Ediyorum <i class="fas fa-chevron-down ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Bilgi Bölümü -->
+    <section id="nasil-calisir" class="py-20 px-6 max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Proje Hakkında</h2>
+            <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <div class="glass-card p-8 rounded-3xl shadow-lg border border-gray-100">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3 text-blue-700">
+                    <i class="fas fa-bullseye"></i> Amacımız
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Evlerde atıl durumda bekleyen oyuncakları ekonomiye kazandırarak, elde edilen gelirle Gazze'deki savaş mağduru çocuklara ve yetimlere umut oluyoruz. 862 MB'lık veriyi 16 MB'a düşüren özel optimizasyon teknolojimizle, iyiliği en hızlı şekilde yayıyoruz.
+                </p>
+            </div>
+            <div class="glass-card p-8 rounded-3xl shadow-lg border border-gray-100">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3 text-blue-700">
+                    <i class="fas fa-users"></i> Ekibimiz
+                </h3>
+                <ul class="text-gray-600 space-y-2">
+                    <li><strong>Danışman:</strong> Ceyhun Gezer</li>
+                    <li><strong>Sistem & Optimizasyon:</strong> Eyüp Ensar</li>
+                    <li><strong>Tasarım & İçerik:</strong> Çağrı Esat</li>
+                    <li><strong>Altyapı Entegrasyonu:</strong> Yusuf Affan</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sipariş ve Teslimat Akışı -->
+        <div class="bg-blue-50 p-10 rounded-[3rem] border-2 border-dashed border-blue-200">
+            <h3 class="text-3xl font-black text-center mb-10 text-blue-900">Sipariş & Teslimat Süreci</h3>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Adım 1 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg">1</div>
+                    <h4 class="font-bold text-lg mb-2">Ürünü Seç</h4>
+                    <p class="text-sm text-gray-500 font-medium leading-tight text-center">Web sitemizden dilediğiniz oyuncağı sepetinize ekleyin ve sipariş verin.</p>
+                </div>
+
+                <!-- Adım 2 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg">2</div>
+                    <h4 class="font-bold text-lg mb-2">Elden Ödeme</h4>
+                    <p class="text-sm text-gray-500 font-medium leading-tight text-center">Ödemeler sadece nakit olarak okul bünyesindeki yetkili kişilere elden yapılır.</p>
+                </div>
+
+                <!-- Adım 3 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-500 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg">3</div>
+                    <h4 class="font-bold text-lg mb-2">Hemen Teslim</h4>
+                    <p class="text-sm text-gray-500 font-medium leading-tight text-center">Ödeme onayından sonra oyuncağınızı stanttan veya yetkiliden teslim alabilirsiniz.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-white p-6 rounded-2xl border border-blue-100 flex items-start gap-4">
+                <i class="fas fa-exclamation-circle text-blue-600 text-2xl mt-1"></i>
+                <div>
+                    <h5 class="font-bold text-blue-900">Önemli Bilgilendirme</h5>
+                    <p class="text-sm text-gray-600">Sipariş verdikten sonra lütfen yetkili ekip üyelerine (Eyüp Ensar, Çağrı Esat veya Yusuf Affan) giderek sürecinizi tamamlayın. Online ödeme şu an için mevcut değildir.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900 text-white text-center">
+        <p class="opacity-50 text-sm mb-2">&copy; 2024 İyilik Köprüsü | NyxLabs</p>
+        <p class="font-bold text-blue-400">Akşemseddin'in İzinde, İyilik Her Yerde!</p>
+    </footer>
+
+</body>
+</html>
